@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="UTF-8">
+  <title>Picker by ustbhuangyi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" type="text/css" href="docs/stylesheets/reset.css">
+  <link rel="stylesheet" type="text/css" href="docs/stylesheets/normalize.css" media="screen">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="docs/stylesheets/stylesheet.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="docs/stylesheets/github-light.css" media="screen">
+</head>
+<body>
+<section class="page-header">
+  <h1 class="project-name">Picker</h1>
+
+  <h2 class="project-tagline">ios UI风格的弹出滑轮选择器</h2>
+</section>
+
+<section class="main-content">
+  <h3>单列筛选器</h3>
+
+  <div id="picker1">点击选择</div>
+
+  <h3>两列筛选器</h3>
+
+  <div id="picker2">点击选择</div>
+
+  <h3>三列选择器</h3>
+
+  <div id="picker3">点击选择</div>
+
+  <h3>城市联动选择器</h3>
+
+  <div id="picker5">点击选择</div>
+
+  
+  <h3>日期联动选择器</h3>
+  
+  <div id="picker6">点击选择</div>
+
+  <footer class="site-footer">
+
+  </footer>
+
+</section>
+
+</body>
+<script src="docs/scripts/picker.min.js"></script>
+<script>
+  var data1 = [
+    {
+      text: '中国',
+      value: 1
+    }, {
+      text: '韩国',
+      value: 2
+    },
+    {
+      text: '法国',
+      value: 3
+    },
+    {
+      text: '美国',
+      value: 4
+    },
+    {
+      text: '澳大利亚',
+      value: 5
+    },
+    {
+      text: '印度',
+      value: 6
+    },
+    {
+      text: '瑞士',
+      value: 7
+    }, {
+      text: '蒙古',
+      value: 8
+    },
+    {
+      text: '越南',
+      value: 9
+    },
+    {
+      text: '法国',
+      value: 10
+    },
+    {
+      text: '俄罗斯',
+      value: 11
+    },
+  ];
+
+  var data2 = [
+    {
+      text: '亚热带季风气候',
+      value: 'a'
+    }, {
+      text: '温带季风气候',
+      value: 'b'
+    },
+    {
+      text: '寒带气候',
+      value: 'c'
+    },
+    {
+      text: '地中海气候',
+      value: 'd'
+    },
+    {
+      text: '温带海洋性气候',
+      value: 'e'
+    },
+    {
+      text: '温带大陆性气候',
+      value: 'f'
+    },
+    {
+      text: '热带季风气候',
+      value: 'g'
+    }, {
+      text: '热带草原气候',
+      value: 'h'
+    },
+  ];
+
+  var data3 = [
+    {
+      text: '农耕文明',
+      value: 's'
+    }, {
+      text: '游牧文明',
+      value: 'ss'
+    }, {
+      text: '海洋文明',
+      value: 'sss'
+    },
+
+  ];
+
+  var picker1El = document.getElementById('picker1');
+  var picker2El = document.getElementById('picker2');
+  var picker3El = document.getElementById('picker3');
+  var picker4El = document.getElementById('picker4');
+
+  var picker1 = new Picker({
+    data: [data1]
+  });
+
+  picker1.on('picker.select', function (selectedVal, selectedIndex) {
+    picker1El.innerText = data1[selectedIndex[0]].text;
+  });
+
+  picker1.on('picker.change', function (index, selectedIndex) {
+    console.log(index);
+  });
+
+  picker1.on('picker.valuechange', function (selectedVal, selectedIndex) {
+    console.log(selectedVal);
+  });
+
+  var picker2 = new Picker({
+    data: [data1, data2]
+  });
+
+  picker2.on('picker.select', function (selectedVal, selectedIndex) {
+    picker2El.innerText = data1[selectedIndex[0]].text + ' ' + data2[selectedIndex[1]].text;
+  });
+
+  picker2.on('picker.change', function (index, selectedIndex) {
+    console.log(index);
+  });
+
+  picker2.on('picker.valuechange', function (selectedVal, selectedIndex) {
+    console.log(selectedVal);
+  });
+
+  var picker3 = new Picker({
+    title: '地球',
+    data: [data1, data2, data3]
+  });
+
+  picker3.on('picker.select', function (selectedVal, selectedIndex) {
+    picker3El.innerText = data1[selectedIndex[0]].text + ' ' + data2[selectedIndex[1]].text + ' ' + data3[selectedIndex[2]].text;
+  });
+
+  picker3.on('picker.change', function (index, selectedIndex) {
+    console.log(index);
+  });
+
+  picker3.on('picker.valuechange', function (selectedVal, selectedIndex) {
+    console.log(selectedVal);
+  });
+
+  picker1El.addEventListener('click', function () {
+    picker1.show();
+  });
+
+  picker2El.addEventListener('click', function () {
+    picker2.show();
+  });
+
+  picker3El.addEventListener('click', function () {
+    picker3.show();
+  });
+
+  var data = [data1, data2, data3];
+  var index = 0;
+
+  
+
+</script>
+<script type="text/javascript" src="docs/city/city.js"></script>
+<script type="text/javascript" src="docs/city/time.js"></script>
+<script type="text/javascript" src="docs/city/index.js"></script>
+</html>
